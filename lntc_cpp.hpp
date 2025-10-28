@@ -130,6 +130,29 @@ namespace lntc_cpp {
     /// @param right the part to check for inside `right`
     /// @return true if `left` contains `right`, false otherwise.
     inline bool contains_ci(const std::string& left, const std::string& right) { return contains(to_lower_cpy(left), to_lower_cpy(right)); }
+
+    /// Replaces all occurences of `old_seq` in `str` with `new_seq`.
+    /// @param str the input string
+    /// @param old_seq the sequence to replace
+    /// @param new_seq the sequence to replace `old_seq` with
+    inline void replace_all(std::string& str, const std::string& old_seq, const std::string& new_seq) {
+      if (old_seq.empty()) return;
+      size_t pos = 0;
+      while ((pos = str.find(old_seq, pos)) != std::string::npos) {
+        str.replace(pos, old_seq.length(), new_seq);
+        pos += new_seq.length();
+      }
+    }
+
+    /// Returns a copy of `str` with all occurences of `old_seq` replaced with with `new_seq`.
+    /// @param str the input string
+    /// @param old_seq the sequence to replace
+    /// @param new_seq the sequence to replace `old_seq` with
+    inline std::string replace_all_cpy(const std::string& str, const std::string& old_seq, const std::string& new_seq) {
+      std::string result = str;
+      replace_all(result, old_seq, new_seq);
+      return result;
+    }
   }
 
   /// Math/Number-Utilities
