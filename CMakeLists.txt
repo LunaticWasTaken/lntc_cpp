@@ -8,6 +8,10 @@ add_library(${PROJECT_NAME} INTERFACE)
 
 target_include_directories(${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_executable(${PROJECT_NAME}_test "${CMAKE_SOURCE_DIR}/test/test.cpp")
+if (EXISTS "${CMAKE_SOURCE_DIR}/test")
+    file(GLOB_RECURSE TEST_HEADERS "${CMAKE_SOURCE_DIR}/test/*.hpp")
+    file(GLOB_RECURSE TEST_SOURCES "${CMAKE_SOURCE_DIR}/test/*.cpp")
+    add_executable(${PROJECT_NAME}_test ${TEST_HEADERS} ${TEST_SOURCES})
+    unset(TEST_HEADERS)
+    unset(TEST_SOURCES)
 endif ()
