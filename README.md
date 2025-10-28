@@ -20,6 +20,7 @@ FetchContent_Declare(
         GIT_TAG master # "master" for the latest, or a specific commit hash
 )
 FetchContent_MakeAvailable(lntc_cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE lntc_cpp) # Or add `lntc_cpp` to the end of your existing `target_link_libraries` call if present.
 ````
 
 ## Contributing
