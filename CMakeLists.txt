@@ -1,12 +1,13 @@
-cmake_minimum_required(VERSION 4.0)
-project(lntc_cpp)
+cmake_minimum_required(VERSION 3.31)
+project(lntc_cpp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(${PROJECT_NAME} STATIC lntc_cpp.hpp)
+add_library(${PROJECT_NAME} INTERFACE)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_executable(${PROJECT_NAME}_test "${CMAKE_SOURCE_DIR}/test/test.cpp")
 endif ()
