@@ -34,7 +34,18 @@ namespace lntc_cpp {
       Singleton& operator=(Singleton&&) = delete;
     };
 
+    /// Runs `func` on a new thread.
+    /// @param func the function to run
     inline void run_async(const std::function<void()>& func) { std::thread(func).detach(); }
+
+    /// Checks if `value` is one of `args`.
+    /// @param value the actual value
+    /// @param args the args to check
+    /// @return true if `value` is one of the values of `args`, false otherwise
+    template <class T, class... Args>
+    bool is_any_of(T value, Args... args) {
+      return ((value == args) || ...);
+    }
   }
 
   /// String-Utilities
@@ -158,7 +169,6 @@ namespace lntc_cpp {
   /// Math/Number-Utilities
   namespace math {
     /// Returns the smaller value of `left` and `right`.
-    /// @tparam T the type of the values.
     /// @param left the left number
     /// @param right the right number
     /// @return the smaller of the two numbers.
@@ -168,7 +178,6 @@ namespace lntc_cpp {
     }
 
     /// Returns the bigger value of `left` and `right`.
-    /// @tparam T the type of the values.
     /// @param left the left number
     /// @param right the right number
     /// @return the bigger of the two numbers.
