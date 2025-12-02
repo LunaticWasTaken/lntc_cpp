@@ -5,11 +5,11 @@
 #include <algorithm>
 #include <vector>
 #include <sstream>
-#include <random>
 #include <functional>
 #include <thread>
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 
 #define LNTC_CPP_REL_VERSION 1
 
@@ -46,6 +46,11 @@ namespace lntc_cpp {
     bool is_any_of(T value, Args... args) {
       return ((value == args) || ...);
     }
+
+    /**
+     * Prints the given message, ending with a newline, to stdout.
+     */
+    inline void println(const std::string& message) { std::cout << message << std::endl; }
   }
 
   /// String-Utilities
