@@ -46,11 +46,6 @@ namespace lntc_cpp {
     bool is_any_of(T value, Args... args) {
       return ((value == args) || ...);
     }
-
-    /**
-     * Prints the given message, ending with a newline, to stdout.
-     */
-    inline void println(const std::string& message) { std::cout << message << std::endl; }
   }
 
   /// String-Utilities
@@ -227,6 +222,26 @@ namespace lntc_cpp {
       } catch (...) {
       }
       return false;
+    }
+  }
+
+  /**
+   * Map/List utilities
+   */
+  namespace collections {
+    /**
+     * Searches the given list for the first object that matches the given predicate, and returns it in an optional if found.
+     * @tparam list_t the list type
+     * @tparam predicate the predicate to match
+     * @param list the list object.
+     * @param pred the predicate to match.
+     * @return an optional with the first matching object found, or a nullopt if none found.
+     */
+    template <typename list_t, typename predicate>
+    auto find_first(const list_t& list, predicate pred) -> std::optional<typename list_t::value_type> {
+      auto it = std::ranges::find_if(list, pred);
+      if (it != list.end()) return *it;
+      return std::nullopt;
     }
   }
 }
