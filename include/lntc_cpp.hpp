@@ -60,9 +60,9 @@ namespace lntc_cpp {
     /// @param str the input string to convert.
     /// @return an all-lowercase copy of `str`.
     inline std::string to_lower_cpy(const std::string& str) {
-      std::string lower = str;
-      to_lower(lower);
-      return lower;
+      std::string final_str = str;
+      to_lower(final_str);
+      return final_str;
     }
 
     /// converts `str` to all-uppercase.
@@ -75,9 +75,9 @@ namespace lntc_cpp {
     /// @param str the input string to convert.
     /// @return an all-uppercase copy of `str`.
     inline std::string to_upper_cpy(const std::string& str) {
-      std::string lower = str;
-      to_upper(lower);
-      return lower;
+      std::string final_str = str;
+      to_upper(final_str);
+      return final_str;
     }
 
     /// Splits `str` by the given delimiter-char, and returns a list with the split parts.
