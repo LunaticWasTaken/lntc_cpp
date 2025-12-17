@@ -68,7 +68,7 @@ namespace lntc_cpp {
     /// converts `str` to all-uppercase.
     /// @param str the string to convert.
     inline void to_upper(std::string& str) {
-      std::ranges::transform(str, str.begin(), [](const unsigned char c) { return std::tolower(c); });
+      std::ranges::transform(str, str.begin(), [](const unsigned char c) { return std::toupper(c); });
     }
 
     /// Returns a copy of `str`, converted to all-uppercase.
@@ -76,7 +76,7 @@ namespace lntc_cpp {
     /// @return an all-uppercase copy of `str`.
     inline std::string to_upper_cpy(const std::string& str) {
       std::string lower = str;
-      to_lower(lower);
+      to_upper(lower);
       return lower;
     }
 
