@@ -6,7 +6,8 @@
 
 ### Manually
 
-- Manually include the ``lntc_cpp.hpp`` header file into your project.
+- Manually include the header files you want to use into your project. They don't depend on each other, so just use what
+  you need.
 
 ### Via CMake
 
@@ -20,7 +21,6 @@ FetchContent_Declare(
         GIT_TAG master # "master" for the latest, or a specific commit hash
 )
 FetchContent_MakeAvailable(lntc_cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE lntc_cpp) # Or add `lntc_cpp` to the end of your existing `target_link_libraries` call if present.
 ````
 
 ## Contributing
@@ -35,6 +35,6 @@ random
 
 Lunatic Code License
 
-Copyright (c) 2025 Lunatic
+Copyright (c) 2026 Lunatic
 
 You can use my code however you want, no restrictions. Giving me credit is appreciated, but not required.
