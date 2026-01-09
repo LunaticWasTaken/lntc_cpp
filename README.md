@@ -23,13 +23,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(lntc_cpp)
 ````
 
+## Examples
+For examples, see `test/main.cpp`.
+
 ## Contributing
 
 Just simply open a pull request with improvements/additions if you like.
 
 However, keep in mind that any code you submit in PR's will be subject to the license below, and that I won't accept
-random
-``I don't want you to use my code anymore`` requests.
+random ``I don't want you to use my code anymore`` requests.
 
 ## License
 
